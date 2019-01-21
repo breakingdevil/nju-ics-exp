@@ -32,6 +32,25 @@ static int cmd_c(char *args) {
   return 0;
 }
 
+static int cmd_x(char *args)
+{
+  char *arg1=strtok(NULL," ");
+  char *arg2=strtok(NULL," ");
+
+  int len;
+  vaddr_t addr;
+  sscanf(arg1,"%d",&len);
+  sscanf(arg2,"%x",&addr);
+  printf("0x%x:",addr);
+  for(int j=0;j<len;j++)
+  {
+    printf("0x%x ",vaddr_read(addr,4));
+    addr+=4;
+  } 
+  printf("\n");
+  return 1;
+}
+
 static int cmd_info(char *args)
 {
   for(int i=0; i < 8;i++)
@@ -71,7 +90,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "step few steps",cmd_si},
-  { "info", "info registers value", cmd_info}
+  { "info", "info registers value", cmd_info},
+  { "x", "scanning memory",cmd_x}
   /* TODO: Add more commands */
 
 };
