@@ -37,6 +37,7 @@ static int cmd_si(char *args)
   printf("args: %s\n",args);
   char *arg = strtok(NULL," ");
   printf("arg :%s",arg);
+  getchar();
   int n = 1;
   sscanf(arg,"%d",&n);
   for (int j=0; j< n;j++)
