@@ -39,7 +39,7 @@ static int cmd_si(char *args)
   printf("arg :%s",arg);
   getchar();
   int n = 1;
-  sscanf(arg,"%d",&n);
+  if(arg != NULL) sscanf(arg,"%d",&n);
   for (int j=0; j< n;j++)
   {
     cpu_exec(1);
