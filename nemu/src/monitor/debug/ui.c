@@ -32,6 +32,15 @@ static int cmd_c(char *args) {
   return 0;
 }
 
+static int cmd_info(char *args)
+{
+  for(int i=0; i < 8;i++)
+  {
+    printf("%s : %x \n",regsl[i], cpu.gpr[i]._32);
+  }
+  return 1;
+}
+
 static int cmd_si(char *args)
 {
   // printf("args: %s\n",args);
@@ -61,7 +70,8 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si", "step few steps",cmd_si}  
+  { "si", "step few steps",cmd_si},
+  { "info", "info registers value", cmd_info}
   /* TODO: Add more commands */
 
 };
