@@ -28,9 +28,13 @@ typedef union {
    */
   struct{
   rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;
-
   vaddr_t eip;
+  struct{
+    rtlreg_t CF,ZF,SF,IF,OF;
+    }eflags;
   };
+
+
 } CPU_state;
 
 extern CPU_state cpu;
